@@ -222,7 +222,7 @@
       input.value = opt.value;
     } else if (input.tagName === "TEXTAREA" && taSetter) {
       taSetter.call(input, value);
-    } else if (setter) {
+    } else if (input.tagName === "INPUT" && setter) {
       setter.call(input, value);
     } else {
       input.value = value;
@@ -450,7 +450,7 @@
           const setter = Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype, "value")?.set;
           const taSetter = Object.getOwnPropertyDescriptor(window.HTMLTextAreaElement.prototype, "value")?.set;
           if (row.el.tagName === "TEXTAREA" && taSetter) taSetter.call(row.el, "");
-          else if (setter) setter.call(row.el, "");
+          else if (row.el.tagName === "INPUT" && setter) setter.call(row.el, "");
           else row.el.value = "";
         }
         row.el.dispatchEvent(new Event("input", { bubbles: true }));
