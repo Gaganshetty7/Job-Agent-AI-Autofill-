@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>JobAgent Settings</title>
+<style>
+  body { font-family: -apple-system, sans-serif; width: 380px; padding: 18px; color: #1f2937; }
+  h2 { font-size: 16px; margin: 0 0 4px; }
+  p.sub { font-size: 12px; color: #6b7280; margin: 0 0 16px; }
+  label { display: block; font-size: 12px; font-weight: 600; margin: 12px 0 4px; }
+  select, input, textarea { width: 100%; box-sizing: border-box; padding: 7px; border: 1px solid #d1d5db; border-radius: 7px; font-size: 13px; }
+  button { margin-top: 16px; width: 100%; padding: 9px; border: none; border-radius: 8px; background: #6366f1; color: #fff; font-weight: 600; cursor: pointer; }
+  button:hover { background: #4f46e5; }
+  .status { font-size: 12px; color: #16a34a; margin-top: 8px; display: none; }
+  .hint { font-size: 11px; color: #9ca3af; margin-top: 4px; }
+  fieldset { border: 1px solid #eee; border-radius: 8px; margin-top: 14px; padding: 10px; }
+  legend { font-size: 12px; font-weight: 700; padding: 0 4px; }
+  .thresh-row { display: flex; align-items: center; gap: 8px; font-size: 12px; margin: 6px 0; }
+  .thresh-row input { width: 70px; }
+</style>
+</head>
+<body>
+  <h2>JobAgent Settings</h2>
+  <p class="sub">Configure your backend and autofill preferences.</p>
+
+  <label for="backendUrl">Backend URL</label>
+  <input id="backendUrl" placeholder="http://localhost:8000" />
+
+  <fieldset>
+    <legend>Confidence thresholds</legend>
+    <div class="thresh-row">Autofill above <input id="thAuto" type="number" min="0" max="100" /> %</div>
+    <div class="thresh-row">Suggest above <input id="thSuggest" type="number" min="0" max="100" /> %</div>
+    <div class="hint">Below "suggest" threshold, JobAgent asks you directly.</div>
+  </fieldset>
+
+  <button id="save">Save Settings</button>
+  <div class="status" id="status">Saved ✓</div>
+
+  <script src="options.js"></script>
+</body>
+</html>
